@@ -1,0 +1,85 @@
+<div class="d-none d-sm-none d-md-block">
+    <div class=" lefpanel">
+
+    </div>
+    <div class="righpanel" align="center">
+        <h1 class="h1">
+            <strong> Iniciar Sesión Usuario</strong>
+        </h1>
+        <img src="{{imgfondo}}" class="card-img-top" alt="...">
+
+        <div class="card">
+
+            <div class="card-body cajon">
+                <form (submit)="signIn()">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Asamblea</label>
+                        </div>
+                        <select class="custom-select" name="miselect" [(ngModel)]="user.asamblea" aria-placeholder=""
+                            (change)="changeWebsite($event)" required>
+                            <option value="">--Seleccionar--</option>
+                            <option [value]="item.id" *ngFor="let item of lista">{{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-grup">
+                        <input type="text" [(ngModel)]="user.username" name="username" class="form-control" required
+                            placeholder="usuario" autofocus>
+                    </div>
+                    <br>
+                    <div class="form-grup">
+                        <input type="password" [(ngModel)]="user.password" name="Password" class="form-control"
+                            placeholder="contraseña" required id="">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Iniciar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="d-block d-sm-block d-md-none">
+        <div class="" align="center">
+            <h1 class="h1">
+                <strong> Iniciar Sesión Usuario</strong>
+            </h1>
+            <img src="{{imgfondo}}" class="card-img-top" alt="...">
+
+            <div class="card">
+
+                <div class="card-body cajon">
+                    <form (submit)="signIn()">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Asamblea</label>
+                            </div>
+                            <select class="custom-select" name="miselect" [(ngModel)]="user.asamblea" aria-placeholder=""
+                                (change)="changeWebsite($event)" required>
+                                <option value="">--Seleccionar--</option>
+                                <option [value]="item.id" *ngFor="let item of lista">{{item.nombre}}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-grup">
+                            <input type="text" [(ngModel)]="user.username" name="username" class="form-control" required
+                                placeholder="usuario" autofocus>
+                        </div>
+                        <br>
+                        <div class="form-grup">
+                            <input type="password" [(ngModel)]="user.password" name="Password" class="form-control"
+                                placeholder="contraseña" required id="">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Iniciar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

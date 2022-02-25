@@ -1,0 +1,56 @@
+.card{
+    border-color: #1a1a1a;
+}
+
+.card-header{
+    border-color: #1a1a1a;
+    font-size: 22px;
+    color: #1a1a1a;
+    
+}
+
+
+.card-body{
+    border-color: #1a1a1a;
+}
+
+.form-control:focus{
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+    box-shadow: #1a1a1a;
+    border: 0px solid #1a1a1a;
+}
+
+
+.lefpanel {
+    padding: 20px;
+    background-color: #918b93;
+    width: 60%;
+    height: 100vh;
+    position: relative;
+    left: 0;
+    top: 0;
+    background-image: url(/assets/fondo.jpg);
+    background-position: 0 0;
+    background-size: cover;
+}
+
+
+.righpanel{
+        padding: 50px;
+    width: 40%;
+    height: 100vh;
+    box-shadow: 0 0 15px rgb(0 0 0 / 35%);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    overflow: scroll;
+}
+
+.cajon {
+    box-shadow: 0 0 15px rgb(0 0 0 / 35%);
+    border-style: none;
+    border-radius: 10px;
+}

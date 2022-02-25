@@ -1,0 +1,97 @@
+<cdk-virtual-scroll-viewport itemSize="400" class="container">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <form (submit)="submit()" [formGroup]="registerForm">
+    <div class="form-grup">
+      <input
+        type="text"
+        formControlName="nombres"
+        name="nombres"
+        class="form-control"
+        placeholder="Nombres"
+        autofocus
+      />
+    </div>
+    <br />
+    <div class="form-grup">
+      <input
+        type="text"
+        formControlName="apellidos"
+        name="apellidos"
+        class="form-control"
+        placeholder="Apellidos"
+      />
+    </div>
+    <br />
+    <div class="form-grup">
+      <input
+        type="text"
+        formControlName="torre"
+        name="torre"
+        class="form-control"
+        placeholder="Cargo"
+      />
+    </div>
+    <br/>
+    <div class="form-grup">
+      <input
+        type="text"
+        formControlName="doc"
+        name="doc"
+        class="form-control"
+        placeholder="Documento"
+      />
+    </div>
+    <br/>
+    <div class="form-grup">
+      <input
+        type="text"
+        formControlName="correo"
+        name="correo"
+        class="form-control"
+        placeholder="Correo"
+      />
+    </div>
+    <br />
+    <div class="form-grup">
+      <input
+        type="text"
+        formControlName="celular"
+        name="celular"
+        class="form-control"
+        placeholder="Numero de Celular"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <div class="custom-control custom-switch">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="customSwitch1"
+          disabled=""
+        />
+        <label class="custom-control-label" for="customSwitch1"
+          >Ley de Protección de Datos Personales: “La autorización suministrada
+          en el presente formulario para que sus datos aquí recopilados el
+          tratamiento señalado en la “Política de Privacidad para el Tratamiento
+          de Datos Personales” habeas-data .</label
+        >
+      </div>
+    </div>
+    <br />
+    <br />
+    <div *ngIf="registerForm.invalid" style="color: red">
+      Revisa si Te falta algun Campo o el Correo no esta bien escrito
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary btn-block"
+      [mat-dialog-close]="false"
+      [disabled]="registerForm.invalid"
+    >
+      Guardar
+    </button>
+  </form>
+  <mat-dialog-content>{{ data.text }}</mat-dialog-content>
+  <mat-dialog-actions> </mat-dialog-actions>
+</cdk-virtual-scroll-viewport>

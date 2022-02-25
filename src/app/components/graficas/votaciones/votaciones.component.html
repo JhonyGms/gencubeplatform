@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12 mx-auto" align="center">
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins" 
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mx-auto" align="center">
+          <div *ngIf="estado; else elseBlock">
+            <button mat-button mat-raised-button color="primary" (click)="Desactivar()">desactivar</button>
+          </div>
+          <ng-template #elseBlock>
+            <button mat-button mat-raised-button color="primary" (click)="activar()">Activar</button>
+    
+          </ng-template>
+          </div>
+          <div class="col-md-4 mx-auto" align="center">
+            <button mat-button mat-raised-button color="primary" (click)="genereat()">PDF</button>
+          <br>
+          <br>
+          </div>
+          <div class="col-md-4 mx-auto" align="center">
+            <button mat-button mat-raised-button color="primary" (click)="CERRAR()">Cerrar la Votacion</button>
+          <br>
+          <br>
+          </div>
+          <div class="col-md-4 mx-auto" align="center"  *ngFor="let listUsers of pporcentaje">
+            <table class="table table-bordered table-hover" id="tab_logic">
+              <thead>
+                <tr >
+                  <th class="text-center">
+                    {{listUsers.label}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id='addr0'>
+                  <td>
+                  {{listUsers.data}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+      
+      <br>
+      
+      
+    </div>
+    
+  </div>

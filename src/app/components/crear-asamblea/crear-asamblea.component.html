@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-8 mx-auto" align="center">
+
+        <div class="card-header">
+            <h1>Crear Asamblea</h1>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" (submit)="onUpload()" >
+               
+                <div class="form-grup">
+                    <input type="text"  [(ngModel)]="asamblea.nombre" name="nombreAsamblea" class="form-control" required placeholder="Nombre Asamblea" autofocus>
+                </div> 
+                <br>
+                <div class="form-grup">
+                    <input type="datetime-local"  [(ngModel)]="asamblea.fechaInicio" name="fechaInicio" class="form-control" placeholder="Fecha Asamblea" required >
+                </div>
+                <br>
+                <div class="form-grup">
+                    <input type="number" [(ngModel)]="asamblea.cantidad" name="cantidad" class="form-control" placeholder="Cantidad de Participantes" required >
+                </div>
+                <br>
+                <div class="form-grup">
+                    <input type="text" [(ngModel)]="asamblea.idzoom" name="idzoom" class="form-control" placeholder="Link de Zoom" required >
+                </div>
+                <br>
+                <div class="form-grup">
+                    <input type="file"  name="bdconjunto" class="form-control-file" placeholder="bd" (change)="onFileChange($event)" accept=".csv" required >
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Iniciar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

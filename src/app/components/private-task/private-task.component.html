@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col-md-6 mx-auto" align="center">
+        <img src="{{tasks.logo}}" class="card-img-top" alt="..." >
+        <br>
+        <br>
+        <div class="card">
+            <div class="card-header">
+                {{tasks.empresa}}
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item" > 
+                        {{tasks.nombres}} {{tasks.apellidos}}
+                    </li>
+                    <li class="list-group-item" >
+                        {{tasks.correo}} 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mx-auto" align="center">
+        
+        <div class="card">
+            <div class="card-header" >
+                Asamblea mas Cercana - {{asamblea.nombre}}
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item" >
+                        Fecha:
+                        <br>
+                        {{asamblea.fechaInicio}}
+                    </li>
+                    <li class="list-group-item" >
+                        Participantes: 
+                        <br>
+                        {{asamblea.Participantes}}
+                    </li>
+                    <li class="list-group-item" >
+                        IdZoom: 
+                        <br>
+                        {{asamblea.idzoom}}
+                    </li>
+                    <li class="list-group-item" >
+                        <a href="#" class="btn btn-primary">Editar</a>
+                        <a style="color: white;">-</a>
+                        <a href="#" class="btn btn-primary">Ir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<div class="row">
+    <div class="col-md-12 mx-auto" align="center">
+        <a href="/crear-asamblea" class="btn btn-primary">CREAR ASAMBLEA</a> <a class="nav-link" style="cursor: pointer;" (click)="AuthServices.logout()"><img src="/assets/cerrar-sesion.png"  alt=""> Cerrar Sesion</a>
+    </div>
+</div>
+
+
+<br>
+<br>
+
+<div class="row">
+    <div class="col-md-12 mx-auto" align="center">
+        <h1>Mis Asambleas</h1>
+        <cdk-virtual-scroll-viewport itemSize=100 class="container">
+            <table class="table table-hover">
+                <thead>
+                  <tr class="table-primary">
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Participantes</th>
+                    <th scope="col">ID Zoom</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Ir</th>
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let asambleasl of asambleas">
+
+                  <tr class="table-active">
+                    <td>{{asambleasl.nombre}}</td>
+                    <td>{{asambleasl.fechaInicio}}</td>
+                    <td>{{asambleasl.Participantes}}</td>
+                    <td>{{asambleasl.idzoom}}</td>
+                    <td><a href="asambleasEdit/{{asambleasl.id}}" >Editar</a></td>
+                    <td><a href="asambleas/{{asambleasl.id}}" >Ir</a></td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+        </cdk-virtual-scroll-viewport>
+       
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- 
+<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h4 class="card-title">Primary card title</h4>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div> -->

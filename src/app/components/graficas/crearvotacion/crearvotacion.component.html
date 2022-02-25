@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-12 mx-auto"  align="center">
+        <br>
+        <br>
+        <div class="card">
+            
+    
+            
+            <div class="card-body">
+                <form (submit)="submit()" [formGroup]="registerForm"> 
+                    <div class="form-grup">
+                        <input type="text" name="nombre" formControlName="nombre" class="form-control" placeholder="Nombre Votacion" autofocus>
+                    </div> 
+                    <br>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" formControlName="diferentesOpciones">
+                        <label class="form-check-label" for="diferentesOpciones">Seleccion multiple</label>
+                      </div>
+                    <br>
+                    <div class="form-group">
+                        <a class="btn btn-primary" (click)="agregarTelefono()">Agregar Opcion <img src="/assets/mas.png"  alt=""></a>
+                      </div>
+                    
+                    <div formArrayName="telefonos" *ngFor="let telefono of telefonos.controls; let i = index">
+                        <div [formGroupName]="i">
+                        <div class="form-group row">
+                            <label class="col-md-2" [attr.for]="'telefono' + i">Opcion</label>
+                            <div class="col-md-8">
+                            <input type="text" [attr.id]="'telefono' + i" class="form-control" formControlName="telefono" placeholder="Ej: Si">
+                            </div>
+                            
+                            <div class="col-md-2">
+                            <button class="btn btn-danger" (click)="removerTelefono(i)">Remover</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Enviar</button>
+                    <button type="button" class="btn btn-default" (click)="refrescar()">Refrescar</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,26 @@
+.container{
+    height: 300px;
+}
+th, td {
+    
+    width: 130px;
+    word-wrap: break-word;
+    align-content: center;
+    text-align: center;
+}
+
+table{
+    table-layout: fixed;
+    width: 200px;
+}
+.table th, .table td {
+    padding: 0.5rem;
+}
+
+.linea {
+    border-top: 1px solid black;
+    height: 2px;
+    max-width: 600px;
+    padding: 0;
+    margin: 20px auto 0 auto;
+  }

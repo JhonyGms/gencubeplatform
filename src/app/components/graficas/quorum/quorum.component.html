@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-12 mx-auto" align="center">
+        <br>
+        <br>
+        <div class="chart">
+            <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [colors]="pieChartColors"
+              [legend]="pieChartLegend">
+            </canvas>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-md-6 mx-auto" align="right">
+                <button mat-button mat-raised-button class="btn btn-primary btn-block" (click)="pieChartLegend=!pieChartLegend">Tamaño</button>
+    
+            </div>
+            <div class="col-md-6 mx-auto" align="left">
+                <button mat-button mat-raised-button class="btn btn-primary btn-block" (click)="actualizarQou()">Actualizar</button>
+    
+            </div>
+            
+            <div class="col-md-6 mx-auto" align="left"><br><br>
+                <button mat-button mat-raised-button class="btn btn-primary btn-block" (click)="genereat()">Descargar Pdf QUORUM</button>
+    
+            </div>
+            <div class="col-md-6 mx-auto" align="left"><br><br>
+                <button mat-button mat-raised-button class="btn btn-primary btn-block" (click)="genereatat()">Descargar Pdf ACTUALIZACION DE DATOS</button>
+    
+            </div>
+        </div>
+     
+    </div>
+
+</div>

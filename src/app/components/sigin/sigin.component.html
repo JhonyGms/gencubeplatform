@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-4 mx-auto"  align="center">
+        <img src="/assets/Logo_Horizontal_Gencube.png" class="card-img-top" alt="..." >
+        <br>
+        <br>
+        <div class="card">
+            
+            <div class="card-header">
+                Iniciar Sesión
+
+                <img>
+            </div>
+            
+            <div class="card-body">
+                <form (submit)="signIn()">
+                    <div class="form-grup">
+                        <input type="text" [(ngModel)]="user.username" name="username" class="form-control" required placeholder="usuario" autofocus>
+                    </div> 
+                    <br>
+                    <div class="form-grup">
+                        <input type="password" [(ngModel)]="user.password" name="Password" class="form-control" placeholder="contraseña" required id="">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Iniciar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

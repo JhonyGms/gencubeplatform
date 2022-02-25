@@ -1,0 +1,72 @@
+
+
+<div *ngIf="estado; else elseBlock">
+<div *ngIf="multiple; else elseBlock2">
+    <div class="row">
+        <div class="col-md-12 mx-auto"  *ngFor="let link of votaciones; index as i;" >
+            <button type="button" class="btn btn-primary btn-block" style="margin-top: 17px;" (click)="actualizarvotacioness()">Refrescar Votacion</button> 
+            <form id="{{i}}" (submit)="GuardarVotomulti(link.id)" >
+                <div class="h2">{{link.nombre}}</div>
+                <br>
+            <!-- <div class="form-check" *ngFor="let data of link.opcion;  index as b; ">
+                <input type="radio"   name="exampleRadios{{b}}" multiple id="exampleRadios{{b}}" [(ngModel)]="result.resp" value="{{data}}"  >
+                <label class="control-label" for="exampleRadios{{b}}">
+                  {{data}}
+                </label>
+              </div>
+              <br>   -->
+              <mat-form-field appearance="fill">
+                <mat-label>Opciones</mat-label>
+                <mat-select [formControl]="toppings" multiple>
+                  <mat-option *ngFor="let data of link.opcion" [value]="data">{{data}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <br>
+              <button type="submit" class="btn btn-primary btn-block" style="width: 50%;">
+                Votar
+            </button>
+            </form> 
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock2>
+    <div class="row">
+        <div class="col-md-12 mx-auto"  *ngFor="let links of votaciones; index as a;" >
+            <button type="button" class="btn btn-primary btn-block" style="margin-top: 17px;" (click)="actualizarvotacioness()">Refrescar Votacion</button> 
+            <form id="{{a}}" (submit)="GuardarVoto(links.id)" >
+                <div class="h2">{{links.nombre}}</div>
+                <br>
+            <div class="form-check" *ngFor="let data of links.opcion ">
+                <input class="control-input" type="radio" name="exampleRadios{{a}}" id="exampleRadios{{a}}" [(ngModel)]="result.resp" value="{{data}}" >
+                <label cclass="control-label" for="exampleRadios{{a}}">
+                  {{data}}
+                </label>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary btn-block" style="width: 50%;">
+                Votar
+            </button>
+            </form> 
+        </div>
+    </div>
+    
+</ng-template>
+  
+</div>
+<ng-template #elseBlock>
+
+    <div class="col-md-12 mx-auto" align="center">
+        <button type="button" class="btn btn-primary btn-block" style="margin-top: 17px;" (click)="actualizarvotacioness()">Refrescar Votacion</button> 
+        <br>
+        <div class="alert alert-dismissible alert-primary">
+            <strong>Votaciones</strong> <a class="alert-link">No hay Votaciones activas en este momento</a>.
+        </div>
+    </div>
+
+</ng-template>
+
+<script>
+    $(document).ready(function() {
+        $('#example-getting-started').multiselect();
+    });
+</script>

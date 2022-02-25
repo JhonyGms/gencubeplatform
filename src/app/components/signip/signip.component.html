@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Sigup
+            </div>
+
+            <div class="card-body">
+                <form (submit)="sigUp()">
+                    <div class="form-grup">
+                        <input type="email" [(ngModel)]="user.email" name="mail" class="form-control" required placeholder="Email" autofocus>
+                    </div>
+                    <br>
+                    <div class="form-grup">
+                        <input type="password" [(ngModel)]="user.password" name="Password" class="form-control" placeholder="contraseña" required id="">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        SignUp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
