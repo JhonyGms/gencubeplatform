@@ -22,7 +22,7 @@ export class ConfirmDialogFormComponent implements OnInit {
     public formBuilder: FormBuilder,
     public Asambleaservices: AsambleasService,
     public dialogreff: MatDialogRef<ConfirmDialogFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { title: string; text: string }
+    @Inject(MAT_DIALOG_DATA) public data: { title: string; text: string, logoConjunto: string }
   ) {
     dialogreff.disableClose = true;
   }

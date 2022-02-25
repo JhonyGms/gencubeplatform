@@ -77,9 +77,10 @@ export class UusuarioComponent implements OnInit {
   formularioInicial() {
     this.authService.formularioInicial(this.user).subscribe(
       (res) => {
-        if (res.estade) {
+        console.log(res)
+        if (res.estade == `true`) {
           const dialogref = this.dialog.open(ConfirmDialogFormComponent, {
-            data: { title: `Bienvenido ${this.user.username}`, text: '' },
+            data: { title: `Bienvenido ${this.user.username}`, text: '',logoConjunto: this.imgfondo },
           });
           dialogref.afterClosed().subscribe((res) => {});
         } else {
@@ -87,6 +88,7 @@ export class UusuarioComponent implements OnInit {
             data: {
               title: `Bienvenido ${this.user.username}`,
               text: 'Este es tu apartado para la asamblea',
+              logoConjunto: this.imgfondo
             },
           });
           dialogref.afterClosed().subscribe((res) => {});

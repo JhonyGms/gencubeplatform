@@ -7,6 +7,8 @@ import { AsambleasService } from '../../../services/asambleas.service'
 import {DomSanitizer} from '@angular/platform-browser';
 import { ConfirmDialogFormComponent } from '../../shared/confirm-dialog-form/confirm-dialog-form.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -20,11 +22,7 @@ export class EscritorioComponent implements OnInit {
 
   idVotacion = [] 
 
-  user = {
-    asamblea: '',
-    username: 'sas',
-    password: '',
-  };
+  
 
   imagenes = {
     logoEpmresa: 'https://azulejo.tuasambleavirtual.com/img/scpaye%20rojo.png',
@@ -54,8 +52,11 @@ export class EscritorioComponent implements OnInit {
    userName = ''
    userEmail = ''
    passWord = ''
- 
+   IdConjunto = ''
+   userNameForm = ''
+
   constructor(
+    private authService: AuthService,
     public TaskServices: TaskService,
     public httpClient: HttpClient, 
     public AsambleasServices: AsambleasService,
@@ -65,43 +66,64 @@ export class EscritorioComponent implements OnInit {
   ) { }
  
   async ngOnInit() {
-    const dialogref = this.dialog.open(ConfirmDialogFormComponent, {
-      data: { title: `Bienvenido ${this.user.username}`, text: '' },
-    });
-    dialogref.afterClosed().subscribe((res) => {});
-    this.inicio()
-    this.getSignature()
+    await this.inicio()
+    await this.getSignature()
+    
   }
 
   inicio(){
     this.TaskServices.getDataInfoUser()
     .subscribe(res =>{
-      console.log(res) 
+      console.log(res)
       this.tasks = res['rows'][0]
       this.imagenes.logoEpmresa = res['rows2'][0].logo 
       this.imagenes.logoConjunto = res['rows1'][0].logo
+      this.IdConjunto = res['rows1'][0].id
       this.userName =res['rows'][0].id  +" "+ res['rows'][0].nombres  +" "+  res['rows'][0].apellidos  +" "+  res['rows'][0].torre +"-"+ res['rows'][0].apartamento
+      this.userNameForm =res['rows'][0].usuario
       this.meetingNumber = res['rows1'][0].idzoom
-      console.log(this.meetingNumber)
-      console.log("aqui")
+      //this.formularioInicial()
     })
 
     this.TaskServices.getDataAsistenciaUser() 
-    .subscribe(res => {
-      console.log(res)
-    })
+    .subscribe(res => {})
 
     this.AsambleasServices.listvotacionesUserdos()
       .subscribe( 
         res => {
           this.idVotacion = res ;
-          console.log(res)
         },   
-        err => console.log(err)
+        ((error) => {})
       ) 
   }
 
- 
+  // formularioInicial() {
+  //   let user = {
+  //     asamblea: this.IdConjunto,
+  //     username: this.userNameForm,
+  //     password: this.passWord,
+  //   };
+  //   this.authService.formularioInicial(user).subscribe(
+  //     (res) => {
+  //       if (res.estade) {
+  //         const dialogref = this.dialog.open(ConfirmDialogFormComponent, {
+  //           data: { title: `Bienvenido ${this.userNameForm}`, text: '' , logoConjunto: this.imagenes.logoConjunto},
+  //         });
+  //         dialogref.afterClosed().subscribe((res) => {});
+  //       } else {
+  //         const dialogref = this.dialog.open(ConfirmDialogComponent, {
+  //           data: {
+  //             title: `Bienvenido ${this.userName}`,
+  //             text: 'Este es tu apartado para la asamblea',
+  //             logoConjunto: this.imagenes.logoConjunto
+  //           },
+  //         });
+  //         dialogref.afterClosed().subscribe((res) => {});
+  //       }
+  //     },
+  //     (err) => {}
+  //   );
+  // }
 
   hora() {
     this.TaskServices.getDataAsistenciaUserTiem() 
@@ -120,14 +142,7 @@ export class EscritorioComponent implements OnInit {
       meetingNumber: this.meetingNumber,
       role: this.role
     }).toPromise().then((data: any) => {
-      if (data.signature) {
-        console.log(data.signature)
-      } else {
-        console.log(data)
-      }
-    }).catch((error) => {
-      console.log(error)
-    })
+    }).catch((error) => {})
   }
 
   startMeeting(signature) {
@@ -138,8 +153,6 @@ export class EscritorioComponent implements OnInit {
       leaveUrl: this.leaveUrl,
       isSupportAV: true,
       success: (success) => {
-        console.log(success)
-
         ZoomMtg.join({
           signature: signature,
           meetingNumber: this.meetingNumber,
@@ -147,18 +160,11 @@ export class EscritorioComponent implements OnInit {
           apiKey: this.apiKey,
           userEmail: this.userEmail,
           passWord: this.passWord,
-          success: (success) => {
-            console.log(success)
-          },
-          error: (error) => {
-            console.log(error)
-          }
+          success: (success) => { },
+          error: (error) => {}
         })
-
       },
-      error: (error) => {
-        console.log(error)
-      }
+      error: (error) => { }
     })
   }
 
