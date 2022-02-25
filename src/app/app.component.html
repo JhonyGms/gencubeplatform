@@ -1,23 +1,16 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
-  <img src="/assets/scpaye rojo.png" width="110" height="20" alt=""> 
-  <a class="navbar-brand " routerLink="/" routerLinkActive="active" align="center"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary"   style="border-radius: 0%"
+>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-link active" routerLink="escritorio" routerLinkActive="active" target="_blank">Asamblea Virtual, Votaciones y Documentos <span class="sr-only">(current)</span></a>
-    </div>  
     <div class="navbar-nav ml-auto">
       <ng-container *ngIf="!authService.loggedInUser(); else loggedIn2 " >
         <a class="nav-link" routerLink="usuario" routerLinkActive="active"><img src="/assets/iniciar-sesion.png"  alt=""> Iniciar Sesión</a>
       </ng-container> 
       <ng-template #loggedIn2>     
-        <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()"><img src="/assets/cerrar-sesion.png"  alt=""> Cerrar Sesion</a>
+        <a  style="cursor: pointer;" (click)="authService.logout()"><img src="/assets/cerrar-sesion.png"  alt=""> Cerrar Sesion</a>
       </ng-template>
     </div>
   </div>
-</nav> -->
+</nav>
 
 <div style="background-color: white;" class="">
 

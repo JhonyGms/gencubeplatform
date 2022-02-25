@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule  } from '@angular/core';
+import { CommonModule  } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ChartsModule } from 'ng2-charts';
@@ -67,6 +68,7 @@ import { ConfirmDialogFormComponent } from './components/shared/confirm-dialog-f
     ConfirmDialogFormComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -87,6 +89,8 @@ import { ConfirmDialogFormComponent } from './components/shared/confirm-dialog-f
     ConfirmDialogComponent
     
   ],
+  exports:      [
+    CommonModule, FormsModule ],
   providers: [
     AuthGuard,
     AuthUserGuard,

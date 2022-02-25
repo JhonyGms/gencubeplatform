@@ -22,7 +22,7 @@
                 </mat-select>
               </mat-form-field>
             <br>
-              <button type="submit" class="btn btn-primary btn-block" style="width: 50%;">
+              <button type="submit" class="btn btn-primary btn-block" style="width: 200px;">
                 Votar
             </button>
             </form> 
@@ -43,7 +43,7 @@
                 </label>
               </div>
               <br>
-              <button type="submit" class="btn btn-primary btn-block" style="width: 50%;">
+              <button type="submit" class="btn btn-primary btn-block" style="width: 200px;">
                 Votar
             </button>
             </form> 
@@ -56,10 +56,10 @@
 <ng-template #elseBlock>
 
     <div class="col-md-12 mx-auto" align="center">
-        <button type="button" class="btn btn-primary btn-block" style="margin-top: 17px;" (click)="actualizarvotacioness()">Refrescar Votacion</button> 
+        <button type="button" class="btn btn-primary btn-block" style="margin-top: 17px; width: 200px;" (click)="actualizarvotacioness()">Refrescar Votacion</button> 
         <br>
-        <div class="alert alert-dismissible alert-primary">
-            <strong>Votaciones</strong> <a class="alert-link">No hay Votaciones activas en este momento</a>.
+        <div class="alert alert-primary" style="background-color: #4474c4 ;">
+           <a>No hay Votaciones activas en este momento</a>.
         </div>
     </div>
 

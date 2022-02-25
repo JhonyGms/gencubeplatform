@@ -1,11 +1,8 @@
-<nav
-  class="navbar navbar-expand-lg navbar-dark bg-primary"
-  style="border-radius: 0%"
-></nav>
+
 <div style="background-color: white">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 mx-auto" align="center">
+      <div class="col-md mx-auto" align="center" *ngIf="!movil">
         <img
           src="{{ imagenes.logoEpmresa }}"
           alt="Planeta Marte"
@@ -14,7 +11,7 @@
         />
       </div>
 
-      <div class="col-md-4 mx-auto" align="center">
+      <div class="col-md mx-auto" align="center">
         <a [href]="sanitize(meetingNumber)" target="_blank">
           <div
             class="picture left"
@@ -41,7 +38,7 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4 mx-auto" align="center">
+      <div class="col-md mx-auto" align="center">
         <img
           src="{{ imagenes.logoConjunto }}"
           alt="Planeta Marte"
@@ -54,11 +51,26 @@
     <hr class="my-14" />
 
     <div class="row">
-      <div class="col-md-5 mx-auto" align="center">
+      <div class="col-md-6 mx-auto justify-content-center" align="center">
+        <h1 class="h1">VOTACION</h1>
+        <app-votar></app-votar>
+      </div>
+      <div class="col-md-6 mx-auto" align="center">
         <app-graficas></app-graficas>
       </div>
-      <div class="col-md-7 mx-auto" align="center">
-        <br />
+    </div>
+    <br />
+    <hr />
+
+    <div class="row">
+      <div class="col-md-6 mx-auto" align="center">
+        <h1 class="h1">ARCHIVOS</h1>
+        <cdk-virtual-scroll-viewport itemSize="400" class="container">
+          <app-documentos></app-documentos>
+        </cdk-virtual-scroll-viewport>
+      </div>
+      <div class="col-md-6 mx-auto" align="center">
+        
         <br />
         <div class="card">
           <div class="card-header" style="color: white">
@@ -81,34 +93,18 @@
     </div>
     <br />
     <hr />
-    <br />
-    <div class="row">
-      <div class="col-md-6 mx-auto" align="center">
-        <h1 class="h1">ARCHIVOS</h1>
-        <cdk-virtual-scroll-viewport itemSize="400" class="container">
-          <app-documentos></app-documentos>
-        </cdk-virtual-scroll-viewport>
-      </div>
-      <div class="col-md-6 mx-auto justify-content-center" align="center">
-        <h1 class="h1">VOTACIONES PREGUNTA</h1>
-        <app-votar></app-votar>
-      </div>
-    </div>
-    <br />
-    <hr />
-    <br />
+
     <div class="row">
       <div class="col-md-12 mx-auto" align="center">
-        <h1 style="font-size: 50px">Resultado Votaciones</h1>
+        <h1 style="font-size: 50px">Resultado</h1>
       </div>
     </div>
     <br />
     <br />
     <h1 style="text-align: center">
-      Votaciones
       <button
         type="button"
-        class="btn btn-default"
+        class="btn btn-primary btn-block"
         (click)="actualizarvotaciones()"
       >
         Refrescar

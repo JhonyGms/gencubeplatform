@@ -23,6 +23,7 @@ export class GraficasComponent implements OnInit {
             const label = ctx.chart.data.labels[ctx.dataIndex];
             return label;
           },
+          color: 'white'
         },
       }
     };
@@ -34,7 +35,7 @@ export class GraficasComponent implements OnInit {
     public pieChartPlugins = [pluginDataLabels];
     public pieChartColors = [
       {
-        backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)'],
+        backgroundColor: ['#a5a5a5', '#4474c4'],
       },
     ];
   

@@ -9,6 +9,7 @@ import { ConfirmDialogFormComponent } from '../../shared/confirm-dialog-form/con
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { AuthService } from '../../../services/auth.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class EscritorioComponent implements OnInit {
 
   idVotacion = [] 
 
-  
+  public movil: boolean = true;
 
   imagenes = {
     logoEpmresa: 'https://azulejo.tuasambleavirtual.com/img/scpaye%20rojo.png',
@@ -62,8 +63,11 @@ export class EscritorioComponent implements OnInit {
     public AsambleasServices: AsambleasService,
     public sanitizer:DomSanitizer,
     public dialog: MatDialog,
+    public BreakpointObserver: BreakpointObserver,
     @Inject(DOCUMENT) document
-  ) { }
+  ) {
+    this.movil = BreakpointObserver.isMatched('(max-width: 599px)');
+   }
  
   async ngOnInit() {
     await this.inicio()

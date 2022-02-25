@@ -9,6 +9,11 @@
     
 }
 
+.btnupdate {
+    margin-top: 17px; 
+    width: 200px;
+}
+
 .card-body{
     border-color: #1a1a1a;
 }
