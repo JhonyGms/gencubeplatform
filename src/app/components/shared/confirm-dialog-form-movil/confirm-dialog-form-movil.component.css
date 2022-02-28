@@ -1,0 +1,70 @@
+.container {
+  height: 500px;
+}
+.form-grup {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+@media (min-width: 880px) {
+  .container {
+    width: 500px;
+  }
+}
+.textCheckbox {
+  font-size: 10px;
+}
+
+.containerHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center !important;
+}
+
+.containerHijo {
+  padding-left: 0px;
+  display: block;
+  align-self: auto;
+}
+
+.titleHeader {
+  font-size: 22px;
+}
+
+.descriptionHeader {
+  font-size: 13px;
+  text-align: justify;
+  padding-right: 10px;
+}
+
+.scrollercontetn {
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+}
+.textHeader {
+  text-shadow: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.form-control {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}

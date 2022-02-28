@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogFormComponent } from '../../shared/confirm-dialog-form/confirm-dialog-form.component';
+import { ConfirmDialogFormMovilComponent } from '../../shared/confirm-dialog-form-movil/confirm-dialog-form-movil.component';
+import { gencubeUtils } from '../../../provider/utils/gencube-utils';
 
 @Component({
   selector: 'app-uusuario',
@@ -25,10 +27,12 @@ export class UusuarioComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public gencubeUtils: gencubeUtils
   ) {}
 
   ngOnInit(): void {
+    console.log(this.gencubeUtils.itsMovil())
     this.authService.listAsam().subscribe((res) => {
       this.lista = res;
     });
@@ -79,10 +83,17 @@ export class UusuarioComponent implements OnInit {
       (res) => {
         console.log(res)
         if (res.estade == `true`) {
-          const dialogref = this.dialog.open(ConfirmDialogFormComponent, {
-            data: { title: `Bienvenido ${this.user.username}`, text: '',logoConjunto: this.imgfondo },
-          });
-          dialogref.afterClosed().subscribe((res) => {});
+          if (this.gencubeUtils.itsMovil()) {
+            const dialogref = this.dialog.open(ConfirmDialogFormMovilComponent, {
+              data: { title: `Bienvenido ${this.user.username}`, text: '',logoConjunto: this.imgfondo },
+            });
+            dialogref.afterClosed().subscribe((res) => {});
+          }else{
+            const dialogref = this.dialog.open(ConfirmDialogFormComponent, {
+              data: { title: `Bienvenido ${this.user.username}`, text: '',logoConjunto: this.imgfondo },
+            });
+            dialogref.afterClosed().subscribe((res) => {});
+          }        
         } else {
           const dialogref = this.dialog.open(ConfirmDialogComponent, {
             data: {

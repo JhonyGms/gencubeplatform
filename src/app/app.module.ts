@@ -1,33 +1,45 @@
+//Core
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule  } from '@angular/core';
-import { CommonModule  } from '@angular/common';
-import { FormsModule,ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+//Import libreries
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
+//Router
 import { AppRoutingModule } from './app-routing.module';
+
+//Definicion on componenet
 import { AppComponent } from './app.component';
+
+//Services
+import { AuthGuard } from './auth.guard';
+import { AuthUserGuard } from './auth-user.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { UploadService } from './services/upload.service';
+
+//providers
+import { gencubeUtils } from './provider/utils/gencube-utils';
+
+//Components
+import { AlertComponent } from './components/alert/alert.component';
+import { ZoomComponent } from './components/zoom/zoom.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SignipComponent } from './components/signip/signip.component';
 import { SiginComponent } from './components/sigin/sigin.component';
 import { TaskComponent } from './components/task/task.component';
 import { PrivateTaskComponent } from './components/private-task/private-task.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSliderModule } from '@angular/material/slider';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { UploadService } from './services/upload.service';
-
-
-import { AuthGuard } from "./auth.guard";
-import { AuthUserGuard } from "./auth-user.guard";
-import { TokenInterceptorService } from "./services/token-interceptor.service";
-import { AlertComponent } from './components/alert/alert.component';
-import { ZoomComponent } from './components/zoom/zoom.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmDialogComponent } from './components/shared/confirm-dialog/confirm-dialog.component';
 import { CrearAsambleaComponent } from './components/crear-asamblea/crear-asamblea.component';
 import { AsambleasComponent } from './components/asambleas/asambleas.component';
@@ -40,11 +52,11 @@ import { VotacionesComponent } from './components/graficas/votaciones/votaciones
 import { DocumentosComponent } from './components/usuario/documentos/documentos.component';
 import { VotarComponent } from './components/usuario/votar/votar.component';
 import { VotacionesusuarioComponent } from './components/usuario/votacionesusuario/votacionesusuario.component';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ConfirmDialogFormComponent } from './components/shared/confirm-dialog-form/confirm-dialog-form.component';
+import { ConfirmDialogFormMovilComponent } from './components/shared/confirm-dialog-form-movil/confirm-dialog-form-movil.component';
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent,
     SignupComponent,
     SignipComponent,
@@ -65,7 +77,8 @@ import { ConfirmDialogFormComponent } from './components/shared/confirm-dialog-f
     DocumentosComponent,
     VotarComponent,
     VotacionesusuarioComponent,
-    ConfirmDialogFormComponent
+    ConfirmDialogFormComponent,
+    ConfirmDialogFormMovilComponent,
   ],
   imports: [
     CommonModule,
@@ -82,31 +95,31 @@ import { ConfirmDialogFormComponent } from './components/shared/confirm-dialog-f
     ChartsModule,
     ReactiveFormsModule,
     ColorPickerModule,
-    PdfViewerModule
+    PdfViewerModule,
   ],
   entryComponents: [
     ConfirmDialogFormComponent,
-    ConfirmDialogComponent
-    
+    ConfirmDialogComponent,
+    ConfirmDialogFormMovilComponent,
   ],
-  exports:      [
-    CommonModule, FormsModule ],
+  exports: [CommonModule, FormsModule],
   providers: [
     AuthGuard,
     AuthUserGuard,
     UploadService,
-    { 
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
-      useValue: { 
-        appearance: 'fill' 
-      } 
+    gencubeUtils,
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'fill',
+      },
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

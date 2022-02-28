@@ -1,0 +1,95 @@
+<div class="container">
+  <img src="{{ data.logoConjunto }}" alt="Planeta Marte" class="card-img-top" />
+  <!-- <h2 mat-dialog-title>{{ data.title }}</h2> -->
+  <h2 class="textHeader titleHeader">Actualización de datos</h2>
+  <h5 class="textHeader descriptionHeader">
+    Verifique que sus datos sean correctos antes de continuar. Recuerde que
+    después de darle guardar no se podrán modificar.
+  </h5>
+
+  <form (submit)="submit()" [formGroup]="registerForm">
+    <label>Informacion Personal:</label>
+    <input
+      type="text"
+      formControlName="nombres"
+      name="nombres"
+      class="form-control"
+      placeholder="Nombres"
+      autofocus
+    />
+    <input
+      type="text"
+      formControlName="apellidos"
+      name="apellidos"
+      class="form-control"
+      placeholder="Apellidos"
+    />
+    <input
+      type="text"
+      formControlName="doc"
+      name="doc"
+      class="form-control"
+      placeholder="Documento"
+    />
+    <input
+      type="text"
+      formControlName="correo"
+      name="correo"
+      class="form-control"
+      placeholder="Correo"
+    />
+    <input
+      type="text"
+      formControlName="celular"
+      name="celular"
+      class="form-control"
+      placeholder="Numero de Celular"
+    />
+    <label>Informacion Vivienda:</label>
+    <input
+      type="text"
+      formControlName="torre"
+      name="torre"
+      class="form-control"
+      placeholder="Torre"
+    />
+    <small id="nombres" class="form-text text-muted"
+      >Ejemplo: 3 o Torre 3</small
+    >
+    <input
+      type="text"
+      formControlName="apto"
+      name="apto"
+      class="form-control"
+      placeholder="Apartamento"
+    />
+    <small id="nombres" class="form-text text-muted"
+      >Ejemplo: Apto 402 o 402</small
+    >
+    <input
+      type="checkbox"
+      class="custom-control-input"
+      id="customSwitch1"
+      disabled=""
+    />
+    <label class="custom-control-label textCheckbox" for="customSwitch1"
+      >Ley de Protección de Datos Personales: “La autorización suministrada en
+      el presente formulario para que sus datos aquí recopilados el tratamiento
+      señalado en la “Política de Privacidad para el Tratamiento de Datos
+      Personales” habeas-data .</label
+    >
+    <div *ngIf="registerForm.invalid" style="color: red">
+      Revisa si Te falta algun Campo o el Correo no esta bien escrito
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary btn-block"
+      [mat-dialog-close]="false"
+      [disabled]="registerForm.invalid"
+    >
+      Guardar
+    </button>
+  </form>
+  <mat-dialog-content>{{ data.text }}</mat-dialog-content>
+  <mat-dialog-actions> </mat-dialog-actions>
+</div>
